@@ -5,3 +5,5 @@ Release
 Images
 /FishingReportsMVC/*.user
 bin
+*.user
+packages
