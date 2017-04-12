@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/FishingReports.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FishingReports.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55893/LocationDataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfAccessEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccessEntity" nillable="true" type="tns:AccessEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccessEntity" nillable="true" type="tns:ArrayOfAccessEntity" />
+  <xs:complexType name="AccessEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Access" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessID" type="ser:guid" />
+      <xs:element minOccurs="0" name="LocationID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccessEntity" nillable="true" type="tns:AccessEntity" />
+  <xs:complexType name="ArrayOfLocationEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LocationEntity" nillable="true" type="tns:LocationEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocationEntity" nillable="true" type="tns:ArrayOfLocationEntity" />
+  <xs:complexType name="LocationEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="StateID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocationEntity" nillable="true" type="tns:LocationEntity" />
+  <xs:complexType name="ArrayOfStateEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StateEntity" nillable="true" type="tns:StateEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStateEntity" nillable="true" type="tns:ArrayOfStateEntity" />
+  <xs:complexType name="StateEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StateEntity" nillable="true" type="tns:StateEntity" />
+</xs:schema>

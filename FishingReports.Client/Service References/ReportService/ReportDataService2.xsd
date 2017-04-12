@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/FishingReportsServices" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FishingReportsServices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55893/ReportDataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:55893/ReportDataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FishingReports.Model" />
+  <xs:complexType name="ReportSearchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AverageFish" type="xs:double" />
+      <xs:element minOccurs="0" name="NumberOfReports" type="xs:int" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfReportListItem" />
+      <xs:element minOccurs="0" name="TotalFish" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportSearchResult" nillable="true" type="tns:ReportSearchResult" />
+  <xs:complexType name="ArrayOfReportListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportListItem" nillable="true" type="tns:ReportListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportListItem" nillable="true" type="tns:ArrayOfReportListItem" />
+  <xs:complexType name="ReportListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Access" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="FlowRate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfImages" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/FishingReports.Model" minOccurs="0" name="ReportType" type="q1:ReportType" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalFish" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WaterConditions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeatherConditions" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportListItem" nillable="true" type="tns:ReportListItem" />
+</xs:schema>

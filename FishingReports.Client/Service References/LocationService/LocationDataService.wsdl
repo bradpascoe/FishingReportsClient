@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LocationDataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:55893/LocationDataService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:55893/LocationDataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:55893/LocationDataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FishingReports.Model" />
+      <xsd:import schemaLocation="http://localhost:55893/LocationDataService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILocationDataService_GetAccesses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccesses" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_GetAccesses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccessesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_GetAllLocations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLocations" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_GetAllLocations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_GetLocations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocations" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_GetLocations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_GetStates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStates" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_GetStates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_SaveAccess_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAccess" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_SaveAccess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_SaveLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveLocation" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_SaveLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_SaveState_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveState" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_SaveState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_ValidateNewAccess_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateNewAccess" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_ValidateNewAccess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateNewAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_ValidateNewLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateNewLocation" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_ValidateNewLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateNewLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_ValidateNewState_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateNewState" />
+  </wsdl:message>
+  <wsdl:message name="ILocationDataService_ValidateNewState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateNewStateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILocationDataService">
+    <wsdl:operation name="GetAccesses">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/GetAccesses" message="tns:ILocationDataService_GetAccesses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/GetAccessesResponse" message="tns:ILocationDataService_GetAccesses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLocations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/GetAllLocations" message="tns:ILocationDataService_GetAllLocations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/GetAllLocationsResponse" message="tns:ILocationDataService_GetAllLocations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/GetLocations" message="tns:ILocationDataService_GetLocations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/GetLocationsResponse" message="tns:ILocationDataService_GetLocations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStates">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/GetStates" message="tns:ILocationDataService_GetStates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/GetStatesResponse" message="tns:ILocationDataService_GetStates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAccess">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/SaveAccess" message="tns:ILocationDataService_SaveAccess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/SaveAccessResponse" message="tns:ILocationDataService_SaveAccess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/SaveLocation" message="tns:ILocationDataService_SaveLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/SaveLocationResponse" message="tns:ILocationDataService_SaveLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveState">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/SaveState" message="tns:ILocationDataService_SaveState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/SaveStateResponse" message="tns:ILocationDataService_SaveState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNewAccess">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/ValidateNewAccess" message="tns:ILocationDataService_ValidateNewAccess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/ValidateNewAccessResponse" message="tns:ILocationDataService_ValidateNewAccess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNewLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/ValidateNewLocation" message="tns:ILocationDataService_ValidateNewLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/ValidateNewLocationResponse" message="tns:ILocationDataService_ValidateNewLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNewState">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocationDataService/ValidateNewState" message="tns:ILocationDataService_ValidateNewState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocationDataService/ValidateNewStateResponse" message="tns:ILocationDataService_ValidateNewState_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILocationDataService" type="tns:ILocationDataService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAccesses">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/GetAccesses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLocations">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/GetAllLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/GetLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStates">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/GetStates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAccess">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/SaveAccess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLocation">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/SaveLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveState">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/SaveState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNewAccess">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/ValidateNewAccess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNewLocation">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/ValidateNewLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNewState">
+      <soap:operation soapAction="http://tempuri.org/ILocationDataService/ValidateNewState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LocationDataService">
+    <wsdl:port name="BasicHttpBinding_ILocationDataService" binding="tns:BasicHttpBinding_ILocationDataService">
+      <soap:address location="http://localhost:55893/LocationDataService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

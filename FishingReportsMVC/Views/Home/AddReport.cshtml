@@ -1,0 +1,293 @@
+﻿@model FishingReportsMVC.Models.ReportAddViewModel
+
+@{
+    ViewBag.Title = "AddReport";
+}
+
+<h2>Add New Report</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.ReportDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Report.ReportDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Report.ReportDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.StateId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Report.StateId, Model.States,
+                        new { @name = "dropDownState", @id = "dropDownState", @class = "form-control", @onchange = "StateChangeFunc(this.value)"})
+                    @Html.ValidationMessageFor(model => model.Report.StateId, "", new { @class = "text-danger" })
+                    <input type="button" value="Add State" onclick="StateAddFunc()" class="btn" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.LocationId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Report.LocationId, Model.Locations, 
+                        new { @name="dropDownLocation", @id="dropDownLocation", @class = "form-control", @onchange = "LocationChangeFunc(this.value)" })
+                    @Html.ValidationMessageFor( model => model.Report.LocationId, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                    <input type="button" value="Add Location" onclick="LocationAddFunc()" class="btn" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.AccessId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Report.AccessId, Model.Accesses,
+                        new { @name = "dropDownAccess", @id = "dropDownAccess", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Report.AccessId, "", new { @class = "text-danger" })
+                    <input type="button" value="Add Access" onclick="AccessAddFunc()" class="btn" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.ReportType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.Report.ReportType, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Report.ReportType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.FlowRate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Report.FlowRate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Report.FlowRate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.WaterConditions, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Report.WaterConditions, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Report.WaterConditions, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.WeatherConditions, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Report.WeatherConditions, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Report.WeatherConditions, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.TotalFish, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Report.TotalFish, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Report.TotalFish, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Report.Description, new { @class = "form-control", @rows = 15 })
+                    @Html.ValidationMessageFor(model => model.Report.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.Images, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                })
+                <div class="col-md-10">
+                    <div style="margin-top: 5px" id="uploadedFilesSection"></div>
+                    <input type="file" id="NewFileUpload" onchange="uploadNewFiles('@Url.Action("UploadNewFiles", "Home")', '@Url.Action("RemoveImage", "Home")')" />
+                </div>
+            </div>
+
+            @Html.HiddenFor(model => model.Report.ReportId)
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Report" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="~/Scripts/Images.js"></script>
+<script>
+
+    var accessDropDownId = "dropDownAccess";
+    var locationDropDownId = "dropDownLocation";
+    var stateDropDownId = "dropDownState";
+
+    function SetDropDownToLoading(dropDownId) {
+        var procemessage = "<option value='0'> Please wait...</option>";
+        $("#" + dropDownId).html(procemessage).show();
+    }
+
+    function SetDropDownItems(dropDownId, data) {
+        var markup = "";
+        for (var index = 0; index < data.length; index++) {
+            markup += "<option value=" + data[index].Value + ">" + data[index].Text + "</option>";
+        }
+
+        $("#" + dropDownId).html(markup).show();
+    }
+
+    function SetDropDownSelectedItem(dropDownId, dropDownText) {
+        var dropDown = document.getElementById(dropDownId);
+
+        for (var i = 0; i < dropDown.options.length; i++) {
+            if (dropDown.options[i].text === dropDownText) {
+                dropDown.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    function GetDropDownValue(dropDownId) {
+        var dropDown = document.getElementById(dropDownId);
+        return dropDown.options[dropDown.selectedIndex].value;
+    }
+
+    function StateAddFunc() {
+        var newState = prompt("Please enter a new state");
+
+        if (newState.length == 2) {
+            SetDropDownToLoading(stateDropDownId);
+
+            $.ajax({
+                url: '@Url.Action( "AddNewState", "Home" )',
+                data: { newState: newState },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    SetDropDownItems(stateDropDownId, data);
+                    SetDropDownSelectedItem(stateDropDownId, newState);
+
+                    StateChangeFunc(GetDropDownValue(stateDropDownId));
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    //some errror, some show err msg to user and log the error
+                    alert(xhr.responseText);
+                }
+            });
+        }
+        else {
+            alert("Invalid state entered.");
+        }
+    }
+
+    function LocationAddFunc() {
+        var newLocation = prompt("Please enter a new location");
+        
+        if (newLocation.length > 0) {
+            SetDropDownToLoading(locationDropDownId);
+
+            var stateId = GetDropDownValue(stateDropDownId);
+
+            $.ajax({
+                url: '@Url.Action( "AddNewLocation", "Home" )',
+                data: {
+                    stateId : stateId,
+                    newLocation: newLocation
+                },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    SetDropDownItems(locationDropDownId, data);
+                    SetDropDownSelectedItem(locationDropDownId, newLocation);
+
+                    LocationChangeFunc(GetDropDownValue(locationDropDownId));
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //some errror, some show err msg to user and log the error
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    }
+
+    function AccessAddFunc() {
+        var newAccess = prompt("Please enter a new access");
+        
+        if (newAccess.length > 0) {
+            SetDropDownToLoading(accessDropDownId);
+
+            var locationId = GetDropDownValue(locationDropDownId);
+
+            $.ajax({
+                url: '@Url.Action( "AddNewAccess", "Home" )',
+                data: {
+                    locationId: locationId,
+                    newAccess: newAccess
+                },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    SetDropDownItems(accessDropDownId, data);
+                    SetDropDownSelectedItem(accessDropDownId, newAccess);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //some errror, some show err msg to user and log the error
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    }
+
+    function StateChangeFunc(stateId) {
+        SetDropDownToLoading(locationDropDownId);
+
+        $.ajax({
+            url: '@Url.Action( "GetLocations", "Home" )',
+            data: { stateId: stateId },
+            cache: false,
+            type: "POST",
+            success: function(data) {
+                SetDropDownItems(locationDropDownId, data);
+
+                if (data.length > 0) {
+                    LocationChangeFunc(data[0].Value);
+                }
+                else {
+                    $("#dropDownAccess").html("").show();
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                //some errror, some show err msg to user and log the error
+                alert(xhr.responseText);
+            }
+        });
+    }
+
+    function LocationChangeFunc(locationId) {
+        SetDropDownToLoading(accessDropDownId);
+
+        $.ajax({
+            url: '@Url.Action( "GetAccesses", "Home" )',
+            data: { locationId: locationId },
+            cache: false,
+            type: "POST",
+            success: function(data) {
+                SetDropDownItems(accessDropDownId, data);
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                //some errror, some show err msg to user and log the error
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>

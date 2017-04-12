@@ -1,0 +1,189 @@
+﻿@model FishingReportsMVC.Models.ReportEditViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Report</h2>
+
+@using( Html.BeginForm() )
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div>
+            <h4>@Model.Report.ReportDate.ToLongDateString()</h4>
+            <p>Submitted by @Model.Report.Username</p>
+            <p>@Model.Report.Location - @Model.Report.Access, @Model.Report.State</p>
+            <hr/>
+            <div class="form-group">
+                @Html.LabelFor( model => model.Report.ReportDate, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.Report.ReportDate, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control"
+                        }
+                    } )
+                    @Html.ValidationMessageFor( model => model.Report.ReportDate, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor( model => model.Report.ReportType, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                } )
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor( model => model.Report.ReportType, new
+                    {
+                        @class = "form-control"
+                    } )
+                    @Html.ValidationMessageFor( model => model.Report.ReportType, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor( model => model.Report.FlowRate, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.Report.FlowRate, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control"
+                        }
+                    } )
+                    @Html.ValidationMessageFor( model => model.Report.FlowRate, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor( model => model.Report.WaterConditions, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.Report.WaterConditions, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control"
+                        }
+                    } )
+                    @Html.ValidationMessageFor( model => model.Report.WaterConditions, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor( model => model.Report.WeatherConditions, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.Report.WeatherConditions, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control"
+                        }
+                    } )
+                    @Html.ValidationMessageFor( model => model.Report.WeatherConditions, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor( model => model.Report.TotalFish, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.Report.TotalFish, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control"
+                        }
+                    } )
+                    @Html.ValidationMessageFor( model => model.Report.TotalFish, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor( model => model.Report.Description, htmlAttributes: new
+                {
+                    @class = "control-label col-md-2"
+                } )
+                <div class="col-md-10">
+                    @Html.TextAreaFor( model => model.Report.Description, new
+                    {
+                        @class = "form-control",
+                        @rows = 15
+                    } )
+                    @Html.ValidationMessageFor( model => model.Report.Description, "", new
+                    {
+                        @class = "text-danger"
+                    } )
+                </div>
+            </div>
+            @Html.HiddenFor( model => model.Report.ReportId )
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Report.Images, htmlAttributes: new
+                   {
+                       @class = "control-label col-md-2"
+                   })
+                <div class="col-md-10">
+                    @foreach( var image in Model.Report.Images )
+                    {
+                        <p id=@("image" + @image.ImageId)>
+                            <img src="@image.ThumbnailName">
+                            <input type="button" id="deleteImageButton" value="Remove" onclick="deleteExistingImage(this,'@Url.Action("RemoveImage", "Home")' )"
+                                   data-assigned-id="@image.ImageId" />
+                        </p>
+                    }
+                    <div style="margin-top: 5px" id="uploadedFilesSection"></div>
+                    <input type="file" id="NewFileUpload" onchange="uploadNewFiles('@Url.Action("UploadNewFiles", "Home")', '@Url.Action("RemoveImage", "Home")')"/>
+                </div>
+            </div>
+            @Html.ValidationSummary(true, "", new
+            {
+                @class = "text-danger"
+            })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update Report" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="~/Scripts/Images.js"></script>  

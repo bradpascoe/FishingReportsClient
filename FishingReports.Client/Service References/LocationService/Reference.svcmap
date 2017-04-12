@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="52e05ce2-c479-4c0d-aabb-db703de81ea7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55893/LocationDataService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LocationDataService1.xsd" MetadataType="Schema" ID="7c7de238-cc94-44fd-b3bd-24680abe346e" SourceId="1" SourceUrl="http://localhost:55893/LocationDataService.svc?xsd=xsd1" />
+    <MetadataFile FileName="LocationDataService2.xsd" MetadataType="Schema" ID="a6516ea9-a040-4a8f-8006-42e25cc58993" SourceId="1" SourceUrl="http://localhost:55893/LocationDataService.svc?xsd=xsd2" />
+    <MetadataFile FileName="LocationDataService3.xsd" MetadataType="Schema" ID="3c09a808-33be-4acf-9f43-ea25660972a7" SourceId="1" SourceUrl="http://localhost:55893/LocationDataService.svc?xsd=xsd3" />
+    <MetadataFile FileName="LocationDataService.disco" MetadataType="Disco" ID="f8b2f6ba-92d3-453f-9ff7-4eb33280a72f" SourceId="1" SourceUrl="http://localhost:55893/LocationDataService.svc?disco" />
+    <MetadataFile FileName="LocationDataService.xsd" MetadataType="Schema" ID="3ad10295-7ecf-4ebb-b774-746f7c7e1683" SourceId="1" SourceUrl="http://localhost:55893/LocationDataService.svc?xsd=xsd0" />
+    <MetadataFile FileName="LocationDataService.wsdl" MetadataType="Wsdl" ID="dbddb2f8-652a-4bad-ae93-3cfa4ddb4cac" SourceId="1" SourceUrl="http://localhost:55893/LocationDataService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

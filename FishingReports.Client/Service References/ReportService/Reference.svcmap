@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="40132d0a-2d3c-4546-878e-f7f70207a9ad" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="FishingReports.Model" />
+      <ReferencedAssembly AssemblyName="Microsoft.CSharp" />
+      <ReferencedAssembly AssemblyName="mscorlib" />
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55893/ReportDataService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ReportDataService.xsd" MetadataType="Schema" ID="963043ad-5f93-4930-bb35-ef8e2154c5f7" SourceId="1" SourceUrl="http://localhost:55893/ReportDataService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ReportDataService.wsdl" MetadataType="Wsdl" ID="b8044a88-e054-4f9b-8890-34c840c5d5d2" SourceId="1" SourceUrl="http://localhost:55893/ReportDataService.svc?wsdl" />
+    <MetadataFile FileName="ReportDataService1.xsd" MetadataType="Schema" ID="5a140266-2b05-44a2-b463-ff36aab11d8a" SourceId="1" SourceUrl="http://localhost:55893/ReportDataService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ReportDataService2.xsd" MetadataType="Schema" ID="00ffc9bd-55db-41c4-af54-f240c2d20b26" SourceId="1" SourceUrl="http://localhost:55893/ReportDataService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ReportDataService3.xsd" MetadataType="Schema" ID="c748079b-3619-4475-9c37-89dc89b1258a" SourceId="1" SourceUrl="http://localhost:55893/ReportDataService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ReportDataService4.xsd" MetadataType="Schema" ID="e5414588-0cd1-49ea-b736-7f6fa2ccaa60" SourceId="1" SourceUrl="http://localhost:55893/ReportDataService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ReportDataService.disco" MetadataType="Disco" ID="75b5dfe9-2d2b-48ca-b148-91484038e45e" SourceId="1" SourceUrl="http://localhost:55893/ReportDataService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,139 @@
+﻿@using FishingReportsMVC.Models
+@model HomeViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Fishing Reports</h2>
+
+@if (Model.IsLoggedIn)
+{
+    <hr />
+    <table style="font: 12pt arial" cellpadding="5">
+        <tr>
+            <td>@Html.ActionLink( "Add report", "AddReport" )</td>
+            @if( Model.IsFiltered)
+            {
+                <td>
+                    <a id="showLink" href="#" onclick="ShowFilters()" style="display: none">Show filters</a>
+                    <a id="hideLink" href="#" onclick="HideFilters()">Hide filters</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a id="showLink" href="#" onclick="ShowFilters()">Show filters</a>
+                    <a id="hideLink" href="#" onclick="HideFilters()" style="display: none">Hide filters</a>
+                </td>
+            }
+        </tr>
+    </table>
+    using (Html.BeginForm("FilterReports", "Home", new { year = Model.ReportFilter.Year }, FormMethod.Post))
+    {
+        <div id="reportFilterSection" @Html.Raw(!Model.IsFiltered ? "style='display: none'" : string.Empty) >
+            <hr />
+            <table style="font: 12pt arial" cellpadding="5">
+                <tr>
+                    <td>Year</td>
+                    <td>
+                        @Html.DropDownListFor( model => model.ReportFilter.Year, Model.Years, new
+                        {
+                            @class = "form-control"
+                        } )
+                    </td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>
+                        @Html.DropDownListFor( model => model.ReportFilter.Month, Model.Months, new
+                        {
+                            @class = "form-control"
+                        } )
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Location</td>
+                    <td>
+                        @Html.DropDownListFor( model => model.ReportFilter.Location, Model.Locations, new
+                        {
+                            @class = "form-control"
+                        } )
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Filter Reports" name="FilterReports"/></td>
+                </tr>
+            </table>
+        </div>
+    }
+    <hr />
+    <table style="font: 12pt arial" cellpadding="5">
+        <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Access</th>
+            <th>Type</th>
+            <th>Total Fish</th>
+            <th>Images</th>
+            <th>Flow (cfs)</th>
+            <th>Username</th>
+        </tr>
+        @foreach( var report in Model.Reports )
+        {
+            <tr>
+                <td>@report.ReportDate.ToShortDateString()</td>
+                <td>@report.Location</td>
+                <td>@report.Access</td>
+                <td>@report.ReportType</td>
+                <td>@report.TotalFish</td>
+                <td>@report.NumberOfImages</td>
+                <td>@report.FlowRate</td>
+                <td>@report.Username</td>
+                <td>@Html.ActionLink( "Details", "Details", new
+                    {
+                        reportId = report.ReportId
+                    } )</td>
+            </tr>
+        }
+    </table>
+    <br/>
+    <table style="font: 12pt arial;" cellpadding="5">
+        <tr>
+            <td><b>Number of reports:</b> @Model.NumberOfReports</td>
+        </tr>
+        <tr>
+            <td><b>Total number of fish:</b> @Model.TotalNumberOfFish</td>
+        </tr>
+        <tr>
+            <td><b>Average number of fish:</b> @Model.AverageNumberOfFish</td>
+        </tr>
+    </table>
+}
+else
+{
+    <p class="lead">@Html.ActionLink("Log in", "Login") to view reports posted by yourself and others.</p>
+}
+
+<script>
+    function ShowElement(elementId) {
+        $("#" + elementId).show();
+    }
+
+    function HideElement(elementId) {
+        $("#" + elementId).hide();
+    }
+
+    function ShowFilters() {
+        ShowElement("reportFilterSection");
+        ShowElement("hideLink");
+        HideElement("showLink");
+    }
+
+    function HideFilters() {
+        HideElement("reportFilterSection");
+        HideElement("hideLink");
+        ShowElement("showLink");
+    }
+</script>

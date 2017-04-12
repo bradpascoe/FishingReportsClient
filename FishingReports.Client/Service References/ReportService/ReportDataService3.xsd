@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/FishingReports.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FishingReports.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55893/ReportDataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfImageEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ImageEntity" nillable="true" type="tns:ImageEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImageEntity" nillable="true" type="tns:ArrayOfImageEntity" />
+  <xs:complexType name="ImageEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImageID" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ThumbNailName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageEntity" nillable="true" type="tns:ImageEntity" />
+  <xs:complexType name="ReportFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Images" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonthFrom" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthTo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Year" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportFilter" nillable="true" type="tns:ReportFilter" />
+  <xs:simpleType name="ReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Wade" />
+      <xs:enumeration value="Float" />
+      <xs:enumeration value="Lake" />
+      <xs:enumeration value="SaltFlats" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportType" nillable="true" type="tns:ReportType" />
+  <xs:complexType name="ReportEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Access" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="FlowRate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfImages" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportID" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportType" type="tns:ReportType" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalFish" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WaterConditions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeatherConditions" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportEntity" nillable="true" type="tns:ReportEntity" />
+</xs:schema>

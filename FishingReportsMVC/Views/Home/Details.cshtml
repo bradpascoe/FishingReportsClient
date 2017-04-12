@@ -1,0 +1,39 @@
+﻿@model FishingReportsMVC.Models.ReportDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Report Details</h2>
+
+<div>
+    <h4>@Model.Report.ReportDate.ToLongDateString()</h4>
+    <p>@Model.Report.Location - @Model.Report.Access, @Model.Report.State</p>
+    <p>Submitted by @Model.Report.Username</p>
+    <hr/>
+    <p>Report type: @Model.Report.ReportType</p>
+    <p>Stream flow: @Model.Report.FlowRate</p>
+    <p>Water conditions: @Model.Report.WaterConditions</p>
+    <p>Weather conditions: @Model.Report.WeatherConditions</p>
+    <p>Fish landed: @Model.Report.TotalFish</p>
+    <p>@Model.Report.Description</p>
+    @foreach (var image in Model.Report.Images)
+    {
+        <p>
+            <a href="@image.ImageName" target="_blank">
+                <img src="@image.ThumbnailName">
+            </a>
+        </p>
+    }
+</div>
+<p>
+    @if (Model.Report.Username == Model.LoggedInUsername)
+    {
+        @Html.ActionLink( "Edit", "Edit", new
+        {
+            reportId = Model.Report.ReportId
+        } )
+        <text>|</text>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
