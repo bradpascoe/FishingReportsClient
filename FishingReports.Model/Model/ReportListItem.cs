@@ -54,6 +54,8 @@ namespace FishingReports.Client.Model
 			set;
 		}
 
+		public string ReportDateString => ReportDate.ToShortDateString();
+
 		public int ReportId
 		{
 			get;
