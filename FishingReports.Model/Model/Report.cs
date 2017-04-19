@@ -73,6 +73,8 @@ namespace FishingReports.Client.Model
 			set;
 		}
 
+		public string ReportDateString => ReportDate.ToLongDateString();
+
 		public int ReportId
 		{
 			get;

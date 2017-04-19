@@ -22,6 +22,16 @@ namespace FishingReportsReact
 			);
 
 			routes.MapRoute(
+				name: "Details",
+				url: "details/{id}",
+				defaults: new
+				{
+					controller = "Home",
+					action = "Details"
+				}
+			);
+
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new

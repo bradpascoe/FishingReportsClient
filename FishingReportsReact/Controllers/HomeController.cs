@@ -1,9 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.UI;
 
 using FishingReports.Client.Model;
 
 using FishingReportsProxy;
+
+using Newtonsoft.Json;
 
 namespace FishingReportsReact.Controllers
 {
@@ -31,11 +34,11 @@ namespace FishingReportsReact.Controllers
 		}
 
 		[OutputCache(Location = OutputCacheLocation.None)]
-		public ActionResult Details(int reportId)
+		public ActionResult Details(int id)
 		{
-			Report report = ReportProxy.GetReport(reportId);
+			Report report = ReportProxy.GetReport(id);
 
-			return Json( report, JsonRequestBehavior.AllowGet );
+			return Json(report, JsonRequestBehavior.AllowGet);
 		}
 
 		[OutputCache(Location = OutputCacheLocation.None)]
@@ -52,6 +55,10 @@ namespace FishingReportsReact.Controllers
 		}
 
 		#endregion HomeController Members
+
+		#region Private Members
+
+		#endregion Private Members
 
 	}
 }
